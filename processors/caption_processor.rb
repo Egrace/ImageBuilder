@@ -5,7 +5,7 @@ class CaptionProcessor < Processor
     return unless need_to_process?
     convert.background 'rgba(0,0,0,0)'
     convert.fill color
-    convert.undercolor undercolor
+    convert.undercolor undercolor if undercolor
     convert.font font
     convert.strokewidth strokewidth if strokewidth
     convert.stroke stroke if stroke
@@ -20,11 +20,11 @@ class CaptionProcessor < Processor
   end
 
   def font
-    params[:font]
+    params[:font] || 'Arial'
   end
 
   def color
-    params[:color]
+    params[:color] || 'black'
   end
 
   def undercolor
