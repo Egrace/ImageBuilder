@@ -3,32 +3,36 @@ require 'bundler/setup'
 require_relative 'image_builder'
 
 ImageBuilder.new(image: {
-                   source: '/Users/Macmini/Downloads/1.jpeg',
-                   color: 'rgba(0,0,0,0.3)'
-                 },
-                 mask: {
-                   color: 'rgba(0,0,0,0.1)'
+                   source: '/Users/Macmini/Downloads/14.jpg',
+                   color: 'rgba(0,0,0,0.5)'
                  },
                  resize: {
-                   height: 200,
-                   width: 600
+                   height: 600,
+                   width: 800
                  },
                  banner: {
-                   source: '/Users/Macmini/Downloads/3.png',
+                   source: '/Users/Macmini/Downloads/31.png',
                    size: '50x50',
-                   width: 30,
-                   height: 30,
+                   width: 64,
+                   height: 64,
                    x: 10,
                    y: 10
                  },
+                 title: {
+                     x: 80,
+                     y: 52,
+                     text: "| News",
+                     font: "/System/Library/Fonts/Geneva.dfont",
+                     pointsize: 28,
+                     color: 'white'
+                 },
                  caption: {
-                   text: 'The best web solutions for your business',
-                   font: 'Arial',
+                   text: "The Moscow government planned to allocate to the fund of Putin's ex-wife subsidies of 62 million a year",
+                   font: '/Library/Fonts/Luminari.ttf',
                    color: 'white',
-                   undercolor: 'rgb(233,118,87)',
-                   width: 220,
-                   height: 75,
-                   x: 75,
-                   y: 140
+                   width: 700,
+                   height: 200,
+                   x: 10,
+                   y: 160
                  },
                  result: '/Users/Macmini/Downloads/2.jpg').process

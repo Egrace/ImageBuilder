@@ -5,8 +5,10 @@ class CaptionProcessor < Processor
     return unless need_to_process?
     convert.background 'rgba(0,0,0,0)'
     convert.fill color
+    convert << "+pointsize"
     convert.undercolor undercolor if undercolor
     convert.font font
+    convert.pointsize pointsize if pointsize
     convert.strokewidth strokewidth if strokewidth
     convert.stroke stroke if stroke
     convert.size "#{width}x#{height}"
@@ -17,6 +19,10 @@ class CaptionProcessor < Processor
 
   def text
     params[:text]
+  end
+
+  def pointsize
+    params[:pointsize]
   end
 
   def font
