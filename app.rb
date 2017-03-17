@@ -3,18 +3,21 @@ require 'bundler/setup'
 require_relative 'image_builder'
 
 ImageBuilder.new(image: {
-                   source: '/home/egrace/1.jpg'
+                   source: '/Users/Macmini/Downloads/1.jpeg',
+                   color: 'rgba(0,0,0,0.3)'
                  },
                  mask: {
-                   color: 'rgba(0,0,0,0)'
+                   color: 'rgba(0,0,0,0.1)'
                  },
                  resize: {
                    height: 200,
                    width: 600
                  },
                  banner: {
-                   source: '/home/egrace/3.png',
-                   size: '50x100',
+                   source: '/Users/Macmini/Downloads/3.png',
+                   size: '50x50',
+                   width: 30,
+                   height: 30,
                    x: 10,
                    y: 10
                  },
@@ -22,10 +25,10 @@ ImageBuilder.new(image: {
                    text: 'The best web solutions for your business',
                    font: 'Arial',
                    color: 'white',
-                   undercolor: '#ff673b',
+                   undercolor: 'rgb(233,118,87)',
                    width: 220,
                    height: 75,
                    x: 75,
                    y: 140
                  },
-                 result: '/home/egrace/2.jpg').process
+                 result: '/Users/Macmini/Downloads/2.jpg').process

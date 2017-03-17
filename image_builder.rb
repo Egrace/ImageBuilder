@@ -2,7 +2,7 @@ require 'mini_magick'
 require_relative 'processors/banner_processor'
 require_relative 'processors/caption_processor'
 require_relative 'processors/resize_processor'
-require_relative 'processors/mask_processor'
+require_relative 'processors/input_image_processor'
 
 class ImageBuilder
   attr_reader :image
@@ -14,18 +14,15 @@ class ImageBuilder
   end
 
   def process
+    imageHeight = MiniMagick::Image.new(params[:image][:source]).height
+    imageWidth = MiniMagick::Image.new(params[:image][:source]).width
     MiniMagick::Tool::Convert.new do |convert|
-      open_image(convert)
+      InputImageProcessor.new(params[:image]).process(convert)
       ResizeProcessor.new(params[:resize]).process(convert)
-      MaskProcessor.new(params[:mask]).process(convert)
       CaptionProcessor.new(params[:caption]).process(convert)
       BannerProcessor.new(params[:banner]).process(convert)
       save_image(convert)
     end
-  end
-
-  def open_image(convert)
-    convert << params[:image][:source]
   end
 
   def mask_image(convert)
