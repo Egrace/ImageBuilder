@@ -1,11 +1,16 @@
-class Processor
-  attr_reader :params
+module ImageProcessing
+  module Processors
+    # Basic class for processors
+    class Processor
+      attr_reader :params
 
-  def initialize(params)
-    @params = params
-  end
+      def initialize(params)
+        @params = params
+      end
 
-  def need_to_process?
-    !params.nil?
+      def need_to_process?
+        !params.nil?
+      end
+    end
   end
 end

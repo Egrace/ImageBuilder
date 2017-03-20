@@ -1,63 +1,74 @@
 require_relative 'processor'
+module ImageProcessing
+  module Processors
+    # Processor that draws text over convert within defined area
+    class CaptionProcessor < Processor
+      def process(convert)
+        return unless need_to_process?
+        prepare convert
+        setup_text convert
+        draw_text convert
+        convert.composite
+      end
 
-class CaptionProcessor < Processor
-  def process(convert)
-    return unless need_to_process?
-    convert.background 'rgba(0,0,0,0)'
-    convert.fill color
-    convert << "+pointsize"
-    convert.undercolor undercolor if undercolor
-    convert.font font
-    convert.pointsize pointsize if pointsize
-    convert.strokewidth strokewidth if strokewidth
-    convert.stroke stroke if stroke
-    convert.size "#{width}x#{height}"
-    convert.caption text
-    convert.geometry "+#{x}+#{y}"
-    convert.composite
-  end
+      private
 
-  def text
-    params[:text]
-  end
+      def prepare(convert)
+        convert.background 'rgba(0,0,0,0)'
+        reset_pointsize convert
+      end
 
-  def pointsize
-    params[:pointsize]
-  end
+      def setup_text(convert)
+        convert.fill color
+        convert.undercolor undercolor if undercolor
+        convert.font font
+      end
 
-  def font
-    params[:font] || 'Arial'
-  end
+      def draw_text(convert)
+        convert.size "#{width}x#{height}"
+        convert.caption text
+        convert.geometry "+#{x}+#{y}"
+      end
 
-  def color
-    params[:color] || 'black'
-  end
+      def reset_pointsize(convert)
+        convert << '+pointsize'
+      end
 
-  def undercolor
-    params[:undercolor]
-  end
+      def text
+        params[:text]
+      end
 
-  def width
-    params[:width]
-  end
+      def pointsize
+        params[:pointsize]
+      end
 
-  def height
-    params[:height]
-  end
+      def font
+        params[:font] || 'Arial'
+      end
 
-  def x
-    params[:x]
-  end
+      def color
+        params[:color] || 'black'
+      end
 
-  def y
-    params[:y]
-  end
+      def undercolor
+        params[:undercolor]
+      end
 
-  def strokewidth
-    params[:strokewidth]
-  end
+      def width
+        params[:width]
+      end
 
-  def stroke
-    params[:stroke]
+      def height
+        params[:height]
+      end
+
+      def x
+        params[:x]
+      end
+
+      def y
+        params[:y]
+      end
+    end
   end
 end
