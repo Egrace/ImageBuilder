@@ -51,9 +51,9 @@ module ImageProcessing
       end
 
       def setup_text(convert)
-        convert.fill color
+        convert.fill color if color
         convert.undercolor undercolor if undercolor
-        convert.font font
+        convert.font font if font
       end
 
       def draw_text(convert)

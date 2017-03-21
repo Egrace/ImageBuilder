@@ -23,10 +23,10 @@ describe ImageProcessing::Processors::BannerProcessor do
 
       it 'passes composite to convert' do
         processor.process(convert)
-        expect(convert.args.join(' ')).to include('-composite')
+        expect(convert.args).to include('-composite')
       end
 
-      it 'passes commands at right sequence' do
+      it 'passes commands in right sequence' do
         processor.process(convert)
         expect(convert.args[0]).to eq source
         expect(convert.args[1]).to eq '-geometry'
