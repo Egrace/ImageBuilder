@@ -59,7 +59,23 @@ ImageProcessing::ImageBuilder
 Result:
 <br/>
 <img src='http://joxi.ru/bmoJBRRHzw0Jry.jpg'></img>
+<h2> #5 </h2>
 
+```
+ImageProcessing::ImageBuilder
+  .new(width: 800, height: 400, color: 'black')
+  .with_background_image(source: 'http://2.bp.blogspot.com/-s5WkB2C1-ig/UiHMU1IbZxI/AAAAAAAAAwI/ooOZcg35OtA/s1600/New+York+City+Wallpapers.jpg',
+                         transparency: '60%')
+  .with_area_text(text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu.',
+                  font: 'GeorgiaB', color: 'white',
+                  x: 60, y: 125, width: 680, height: 150)
+  .build('/Users/Macmini/Downloads/2.jpg')
+
+```
+
+Result:
+<br/>
+<img src='http://joxi.ru/VrwzpyyCyw0PAX.jpg'></img>
 
 <h1>More samples</h1>
 
