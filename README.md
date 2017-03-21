@@ -102,7 +102,7 @@ Result:
 
 
 <h1>Installation</h1> 
-<p>Just copy image_builder.rb and processors.rb into your rails project and add this line to your gemfile: </p>
+<p>Just copy image_builder.rb and processors/* into your rails project and add this line to your gemfile: </p>
 
 ```gem 'minimagick'```
 
