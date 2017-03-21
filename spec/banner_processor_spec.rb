@@ -15,19 +15,17 @@ describe ImageProcessing::Processors::BannerProcessor do
     context 'with not empty params' do
       let(:source) { 'abcd' }
       let(:processor) { ImageProcessing::Processors::BannerProcessor.new(source: source, x: 12, y: 15, width: 25, height: 14) }
+      before(:each) { processor.process(convert) }
 
       it 'passes correct geometry to convert' do
-        processor.process(convert)
         expect(convert.args.join(' ')).to include('-geometry 25x14+12+15')
       end
 
       it 'passes composite to convert' do
-        processor.process(convert)
         expect(convert.args).to include('-composite')
       end
 
       it 'passes commands in right sequence' do
-        processor.process(convert)
         expect(convert.args[0]).to eq source
         expect(convert.args[1]).to eq '-geometry'
         expect(convert.args.last).to eq '-composite'
