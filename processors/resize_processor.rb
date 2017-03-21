@@ -4,7 +4,7 @@ module ImageProcessing
     # Processor that resizes convert
     class ResizeProcessor < Processor
       def process(convert)
-        convert.resize "#{params[:width]}x#{params[:height]}"
+        convert.resize "#{width}x#{height}"
       end
     end
   end

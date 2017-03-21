@@ -12,26 +12,6 @@ module ImageProcessing
         convert.composite
       end
 
-      def source
-        params[:source]
-      end
-
-      def width
-        params[:width]
-      end
-
-      def height
-        params[:height]
-      end
-
-      def x
-        params[:x]
-      end
-
-      def y
-        params[:y]
-      end
-
       private
 
       def size

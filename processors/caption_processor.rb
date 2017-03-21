@@ -11,38 +11,6 @@ module ImageProcessing
         convert.composite
       end
 
-      def text
-        params[:text]
-      end
-
-      def font
-        params[:font]
-      end
-
-      def color
-        params[:color]
-      end
-
-      def undercolor
-        params[:undercolor]
-      end
-
-      def width
-        params[:width]
-      end
-
-      def height
-        params[:height]
-      end
-
-      def x
-        params[:x]
-      end
-
-      def y
-        params[:y]
-      end
-
       private
 
       def prepare(convert)

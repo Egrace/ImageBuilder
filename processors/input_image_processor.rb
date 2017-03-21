@@ -10,22 +10,6 @@ module ImageProcessing
         convert.composite
       end
 
-      def darken
-        params[:darken]
-      end
-
-      def source
-        params[:source]
-      end
-
-      def width
-        params[:width]
-      end
-
-      def height
-        params[:height]
-      end
-
       private
 
       def open_image(convert)
@@ -33,7 +17,7 @@ module ImageProcessing
       end
 
       def size
-        "#{params[:width]}x#{params[:height]}!"
+        "#{width}x#{height}!"
       end
 
       def coordinates

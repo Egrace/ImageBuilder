@@ -19,14 +19,6 @@ module ImageProcessing
       def size
         "#{width}x#{height}"
       end
-
-      def width
-        params[:width]
-      end
-
-      def height
-        params[:height]
-      end
     end
   end
 end
