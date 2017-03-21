@@ -1,12 +1,12 @@
 require_relative 'spec_helper'
 
-describe ImageProcessing::Processors::CaptionProcessor do
+describe ImageProcessing::Processors::AreaTextProcessor do
   let(:convert) { MiniMagick::Tool::Convert.new }
 
   describe '#process' do
     context 'with empty params' do
       it 'passes nothing to convert' do
-        processor = ImageProcessing::Processors::CaptionProcessor.new(nil)
+        processor = ImageProcessing::Processors::AreaTextProcessor.new(nil)
         processor.process(convert)
         expect(convert.args).to be_empty
       end
@@ -14,10 +14,10 @@ describe ImageProcessing::Processors::CaptionProcessor do
 
     context 'with all params' do
       let(:text) { 'abcd' }
-      let(:processor) { ImageProcessing::Processors::CaptionProcessor.new(text: text, x: 15, y: 25,
-                                                                          width: 100, height: 50,
-                                                                          font: 'Arial', color: 'red',
-                                                                          undercolor: 'orange') }
+      let(:processor) { ImageProcessing::Processors::AreaTextProcessor.new(text: text, x: 15, y: 25,
+                                                                           width: 100, height: 50,
+                                                                           font: 'Arial', color: 'red',
+                                                                           undercolor: 'orange') }
       before(:each) { processor.process(convert) }
       it 'cancels pointsize' do
         expect(convert.args).to include('+pointsize')
@@ -62,8 +62,8 @@ describe ImageProcessing::Processors::CaptionProcessor do
     end
 
     context 'without optional params' do
-      let(:processor) { ImageProcessing::Processors::CaptionProcessor.new(text: 'abcd', x: 15, y: 25,
-                                                                          width: 100, height: 50) }
+      let(:processor) { ImageProcessing::Processors::AreaTextProcessor.new(text: 'abcd', x: 15, y: 25,
+                                                                           width: 100, height: 50) }
       before(:each) { processor.process(convert) }
 
       it 'not sets up font' do

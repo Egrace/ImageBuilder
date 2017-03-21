@@ -1,12 +1,12 @@
 require_relative 'spec_helper'
 
-describe ImageProcessing::Processors::InputImageProcessor do
+describe ImageProcessing::Processors::BackgroundImageProcessor do
   let(:convert) { MiniMagick::Tool::Convert.new }
 
   describe '#process' do
     context 'with empty params' do
       it 'passes nothing to convert' do
-        processor = ImageProcessing::Processors::InputImageProcessor.new(nil)
+        processor = ImageProcessing::Processors::BackgroundImageProcessor.new(nil)
         processor.process(convert)
         expect(convert.args).to be_empty
       end
@@ -14,7 +14,7 @@ describe ImageProcessing::Processors::InputImageProcessor do
 
     context 'with not empty params' do
       let(:source) { 'abcd' }
-      let(:processor) { ImageProcessing::Processors::InputImageProcessor.new(source: source, width: 25, height: 14) }
+      let(:processor) { ImageProcessing::Processors::BackgroundImageProcessor.new(source: source, width: 25, height: 14) }
 
       it 'passes correct geometry to convert' do
         processor.process(convert)
@@ -40,7 +40,7 @@ describe ImageProcessing::Processors::InputImageProcessor do
     end
 
     context 'with passed darken param' do
-      let(:processor) { ImageProcessing::Processors::InputImageProcessor.new(source: 'abcd', width: 25, height: 14, darken: '10%') }
+      let(:processor) { ImageProcessing::Processors::BackgroundImageProcessor.new(source: 'abcd', width: 25, height: 14, darken: '10%') }
 
       it 'passes composite to convert' do
         processor.process(convert)

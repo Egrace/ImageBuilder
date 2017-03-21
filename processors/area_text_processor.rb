@@ -2,7 +2,7 @@ require_relative 'processor'
 module ImageProcessing
   module Processors
     # Processor that draws text over convert within defined area
-    class CaptionProcessor < Processor
+    class AreaTextProcessor < Processor
       def process(convert)
         return unless need_to_process?
         prepare convert

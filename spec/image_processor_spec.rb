@@ -1,12 +1,12 @@
 require_relative 'spec_helper'
 
-describe ImageProcessing::Processors::BannerProcessor do
+describe ImageProcessing::Processors::ImageProcessor do
   let(:convert) { MiniMagick::Tool::Convert.new }
 
   describe '#process' do
     context 'with empty params' do
       it 'passes nothing to convert' do
-        processor = ImageProcessing::Processors::BannerProcessor.new(nil)
+        processor = ImageProcessing::Processors::ImageProcessor.new(nil)
         processor.process(convert)
         expect(convert.args).to be_empty
       end
@@ -14,7 +14,7 @@ describe ImageProcessing::Processors::BannerProcessor do
 
     context 'with not empty params' do
       let(:source) { 'abcd' }
-      let(:processor) { ImageProcessing::Processors::BannerProcessor.new(source: source, x: 12, y: 15, width: 25, height: 14) }
+      let(:processor) { ImageProcessing::Processors::ImageProcessor.new(source: source, x: 12, y: 15, width: 25, height: 14) }
       before(:each) { processor.process(convert) }
 
       it 'passes correct geometry to convert' do

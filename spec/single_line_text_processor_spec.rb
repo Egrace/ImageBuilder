@@ -1,21 +1,21 @@
 require_relative 'spec_helper'
 
-describe ImageProcessing::Processors::LabelProcessor do
+describe ImageProcessing::Processors::SingleLineTextProcessor do
   let(:convert) { MiniMagick::Tool::Convert.new }
 
   describe '#process' do
     context 'with empty params' do
       it 'passes nothing to convert' do
-        processor = ImageProcessing::Processors::LabelProcessor.new(nil)
+        processor = ImageProcessing::Processors::SingleLineTextProcessor.new(nil)
         processor.process(convert)
         expect(convert.args).to be_empty
       end
     end
 
     context 'with all params' do
-      let(:processor) { ImageProcessing::Processors::LabelProcessor.new(text: 'abcd', x: 15, y: 25,
-                                                                          font: 'Arial', color: 'red',
-                                                                          pointsize: 12) }
+      let(:processor) { ImageProcessing::Processors::SingleLineTextProcessor.new(text: 'abcd', x: 15, y: 25,
+                                                                                 font: 'Arial', color: 'red',
+                                                                                 pointsize: 12) }
       before(:each) { processor.process(convert) }
       it 'passes pointsize' do
         expect(convert.args.join(' ')).to include('-pointsize 12')

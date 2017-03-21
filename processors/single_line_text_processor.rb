@@ -2,7 +2,7 @@ require_relative 'processor'
 module ImageProcessing
   module Processors
     # This processor draws single string label over convert
-    class LabelProcessor < Processor
+    class SingleLineTextProcessor < Processor
       def process(convert)
         return unless need_to_process?
         convert.font font

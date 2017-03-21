@@ -1,7 +1,7 @@
 require_relative 'processor'
 module ImageProcessing
   module Processors
-    class InputImageProcessor < Processor
+    class BackgroundImageProcessor < Processor
       def process(convert)
         return unless need_to_process?
         open_image(convert)

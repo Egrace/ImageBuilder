@@ -23,7 +23,7 @@ describe ImageProcessing::ImageBuilder do
     it 'adds input image processor' do
       builder.with_background_image(source: sample_source)
       expect(builder.processors.size).to be_equal 2
-      expect(builder.processors.last).to be_instance_of ImageProcessing::Processors::InputImageProcessor
+      expect(builder.processors.last).to be_instance_of ImageProcessing::Processors::BackgroundImageProcessor
     end
 
     it 'creates input image processor with geometry defined in builder' do
@@ -46,11 +46,11 @@ describe ImageProcessing::ImageBuilder do
     end
   end
 
-  describe '#with_logo' do
-    before(:each) { builder.with_logo(source: 'abcd', width: 10, height: 15, x: 5, y: 7) }
+  describe '#with_image' do
+    before(:each) { builder.with_image(source: 'abcd', width: 10, height: 15, x: 5, y: 7) }
     it 'adds banner processor' do
       expect(builder.processors.size).to be_equal 2
-      expect(builder.processors.last).to be_instance_of ImageProcessing::Processors::BannerProcessor
+      expect(builder.processors.last).to be_instance_of ImageProcessing::Processors::ImageProcessor
     end
 
     it 'creates banner processor with defined attributes' do
@@ -62,15 +62,15 @@ describe ImageProcessing::ImageBuilder do
     end
   end
 
-  describe '#with_title' do
+  describe '#with_label' do
     it 'adds label processor' do
-      builder.with_title(text: 'sample text', x: 15, y: 25)
+      builder.with_label(text: 'sample text', x: 15, y: 25)
       expect(builder.processors.size).to be_equal 2
-      expect(builder.processors.last).to be_instance_of ImageProcessing::Processors::LabelProcessor
+      expect(builder.processors.last).to be_instance_of ImageProcessing::Processors::SingleLineTextProcessor
     end
 
     it 'passes to processor defined params' do
-      builder.with_title(text: 'sample text', x: 15, y: 25, color: 'white', font: 'Georgia', pointsize: 24)
+      builder.with_label(text: 'sample text', x: 15, y: 25, color: 'white', font: 'Georgia', pointsize: 24)
       expect(builder.processors.last.font).to eq 'Georgia'
       expect(builder.processors.last.color).to eq 'white'
       expect(builder.processors.last.x).to eq 15
@@ -81,7 +81,7 @@ describe ImageProcessing::ImageBuilder do
 
     context 'with default optional params' do
       it 'uses default params values' do
-        builder.with_title(text: 'sample text', x: 15, y: 25)
+        builder.with_label(text: 'sample text', x: 15, y: 25)
         expect(builder.processors.last.font).to eq 'Arial'
         expect(builder.processors.last.color).to eq 'black'
         expect(builder.processors.last.pointsize).to eq 14
@@ -91,13 +91,13 @@ describe ImageProcessing::ImageBuilder do
 
   describe '#with_caption' do
     it 'adds caption processor' do
-      builder.with_caption(text: 'sample text', x: 15, y: 25, width: 100, height: 50)
+      builder.with_area_text(text: 'sample text', x: 15, y: 25, width: 100, height: 50)
       expect(builder.processors.size).to be_equal 2
-      expect(builder.processors.last).to be_instance_of ImageProcessing::Processors::CaptionProcessor
+      expect(builder.processors.last).to be_instance_of ImageProcessing::Processors::AreaTextProcessor
     end
 
     it 'passes to processor defined params' do
-      builder.with_caption(text: 'sample text', x: 15, y: 25, width: 100, height: 50, color: 'white', font: 'Georgia')
+      builder.with_area_text(text: 'sample text', x: 15, y: 25, width: 100, height: 50, color: 'white', font: 'Georgia')
       expect(builder.processors.last.font).to eq 'Georgia'
       expect(builder.processors.last.color).to eq 'white'
       expect(builder.processors.last.x).to eq 15
@@ -109,7 +109,7 @@ describe ImageProcessing::ImageBuilder do
 
     context 'with default optional params' do
       it 'uses default params values' do
-        builder.with_caption(text: 'sample text', x: 15, y: 25, width: 100, height: 50)
+        builder.with_area_text(text: 'sample text', x: 15, y: 25, width: 100, height: 50)
         expect(builder.processors.last.font).to eq 'Arial'
         expect(builder.processors.last.color).to eq 'black'
       end
@@ -117,10 +117,10 @@ describe ImageProcessing::ImageBuilder do
   end
 
   describe '#build' do
-    let(:processor_1) { ImageProcessing::Processors::BannerProcessor.new(source: 'a', width: 10, height: 15,
-                                                                         x: 5, y: 7) }
-    let(:processor_2) { ImageProcessing::Processors::BannerProcessor.new(source: 'b', width: 10, height: 15,
-                                                                         x: 5, y: 7) }
+    let(:processor_1) { ImageProcessing::Processors::ImageProcessor.new(source: 'a', width: 10, height: 15,
+                                                                        x: 5, y: 7) }
+    let(:processor_2) { ImageProcessing::Processors::ImageProcessor.new(source: 'b', width: 10, height: 15,
+                                                                        x: 5, y: 7) }
     it 'calls process method of each processor' do
       allow_any_instance_of(MiniMagick::Tool).to receive(:call)
       builder.processors << processor_1

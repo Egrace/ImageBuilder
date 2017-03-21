@@ -4,7 +4,7 @@ require 'mini_magick'
 module ImageProcessing
   module Processors
     # Draws company logo over convert
-    class BannerProcessor < Processor
+    class ImageProcessor < Processor
       def process(convert)
         return unless need_to_process?
         convert << source
