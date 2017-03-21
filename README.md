@@ -101,6 +101,20 @@ Result:
 <img src='http://joxi.ru/LmGn7ggtWK7Xrl.jpg'></img>
 
 
+<h1>Simple templates</h1>
+
+```
+ImageProcessing::ImageBuilder
+  .new(width: 800, height: 400, color: 'rgb(44,7,62)')
+  .with_area_text(text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec.',
+                  font: 'ArialB', color: 'white',
+                  x: 30, y: 120, width: 740, height: 150)
+  .build('/Users/Macmini/Downloads/2.jpg')
+```
+Result:
+<br/>
+<img src='http://joxi.ru/ZrJkEBBTKvNVmj.jpg'></img>
+
 <h1>Installation</h1> 
 <p>Just copy image_builder.rb and processors/* into your rails project and add this line to your gemfile: </p>
 
