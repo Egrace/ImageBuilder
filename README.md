@@ -2,6 +2,60 @@
 
 <p>Simple banner generator. Uses ImageMagick to generate images.</p>
 
+<h1>Simple templates</h1>
+<h2> #1 </h2>
+```
+ImageProcessing::ImageBuilder
+  .new(width: 800, height: 400, color: 'rgb(44,7,62)')
+  .with_area_text(text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec.',
+                  font: 'ArialB', color: 'white',
+                  x: 30, y: 125, width: 740, height: 150)
+  .build('/Users/Macmini/Downloads/2.jpg')
+```
+Result:
+<br/>
+<img src='http://joxi.ru/ZrJkEBBTKvNVmj.jpg'></img>
+<h2> #2 </h2>
+
+```
+ImageProcessing::ImageBuilder
+  .new(width: 800, height: 400, color: 'rgb(149,201,254)')
+  .with_area_text(text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec.',
+                  font: 'Arial', color: 'black',
+                  x: 30, y: 125, width: 740, height: 150)
+  .build('/Users/Macmini/Downloads/2.jpg')
+```
+Result:
+<br/>
+<img src='http://joxi.ru/KAxJgppHxpYMm8.jpg'></img>
+<h2> #3 </h2>
+
+```
+ImageProcessing::ImageBuilder
+  .new(width: 800, height: 400, color: 'rgb(90,5,0)')
+  .with_area_text(text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec.',
+                  font: 'GeorgiaB', color: 'white',
+                  x: 30, y: 75, width: 740, height: 250)
+  .build('/Users/Macmini/Downloads/2.jpg')
+```
+Result:
+<br/>
+<img src='http://joxi.ru/12M5VggSR6672J.jpg'></img>
+<h2> #4 </h2>
+
+```
+ImageProcessing::ImageBuilder
+  .new(width: 800, height: 400, color: 'rgb(2,30,88)')
+  .with_area_text(text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu.',
+                  font: 'GeorgiaB', color: 'rgb(242,234,93)',
+                  x: 30, y: 75, width: 740, height: 250)
+  .build('/Users/Macmini/Downloads/2.jpg')
+```
+Result:
+<br/>
+<img src='http://joxi.ru/bmoJBRRHzw0Jry.jpg'></img>
+
+
 <h1>Samples of usage</h1>
 
 <h2> #1 </h2>
@@ -99,21 +153,6 @@ ImageProcessing::ImageBuilder
 Result:
 <br/>
 <img src='http://joxi.ru/LmGn7ggtWK7Xrl.jpg'></img>
-
-
-<h1>Simple templates</h1>
-
-```
-ImageProcessing::ImageBuilder
-  .new(width: 800, height: 400, color: 'rgb(44,7,62)')
-  .with_area_text(text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec.',
-                  font: 'ArialB', color: 'white',
-                  x: 30, y: 120, width: 740, height: 150)
-  .build('/Users/Macmini/Downloads/2.jpg')
-```
-Result:
-<br/>
-<img src='http://joxi.ru/ZrJkEBBTKvNVmj.jpg'></img>
 
 <h1>Installation</h1> 
 <p>Just copy image_builder.rb and processors/* into your rails project and add this line to your gemfile: </p>
