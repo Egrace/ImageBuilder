@@ -4,6 +4,7 @@
 
 <h1>Simple templates</h1>
 <h2> #1 </h2>
+
 ```
 ImageProcessing::ImageBuilder
   .new(width: 800, height: 400, color: 'rgb(44,7,62)')
@@ -12,6 +13,7 @@ ImageProcessing::ImageBuilder
                   x: 30, y: 125, width: 740, height: 150)
   .build('/Users/Macmini/Downloads/2.jpg')
 ```
+
 Result:
 <br/>
 <img src='http://joxi.ru/ZrJkEBBTKvNVmj.jpg'></img>
@@ -25,6 +27,7 @@ ImageProcessing::ImageBuilder
                   x: 30, y: 125, width: 740, height: 150)
   .build('/Users/Macmini/Downloads/2.jpg')
 ```
+
 Result:
 <br/>
 <img src='http://joxi.ru/KAxJgppHxpYMm8.jpg'></img>
@@ -38,6 +41,7 @@ ImageProcessing::ImageBuilder
                   x: 30, y: 75, width: 740, height: 250)
   .build('/Users/Macmini/Downloads/2.jpg')
 ```
+
 Result:
 <br/>
 <img src='http://joxi.ru/12M5VggSR6672J.jpg'></img>
@@ -51,6 +55,7 @@ ImageProcessing::ImageBuilder
                   x: 30, y: 75, width: 740, height: 250)
   .build('/Users/Macmini/Downloads/2.jpg')
 ```
+
 Result:
 <br/>
 <img src='http://joxi.ru/bmoJBRRHzw0Jry.jpg'></img>
