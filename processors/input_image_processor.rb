@@ -32,25 +32,12 @@ module ImageProcessing
         convert << source
       end
 
-      def colorify(convert)
-        convert.fill color
-        convert.draw "rectangle #{first_pixel} #{last_pixel}"
-      end
-
       def size
         "#{params[:width]}x#{params[:height]}!"
       end
 
       def coordinates
         '+0+0'
-      end
-
-      def first_pixel
-        '0,0'
-      end
-
-      def last_pixel
-        "#{params[:width]},#{params[:height]}"
       end
     end
   end
