@@ -10,19 +10,23 @@ module ImageProcessing
         convert.composite
       end
 
-      private
-
       def darken
         params[:darken]
       end
 
-      def size
-        "#{params[:width]}x#{params[:height]}!"
+      def source
+        params[:source]
       end
 
-      def coordinates
-        '+0+0'
+      def width
+        params[:width]
       end
+
+      def height
+        params[:height]
+      end
+
+      private
 
       def open_image(convert)
         convert << source
@@ -33,12 +37,12 @@ module ImageProcessing
         convert.draw "rectangle #{first_pixel} #{last_pixel}"
       end
 
-      def source
-        params[:source]
+      def size
+        "#{params[:width]}x#{params[:height]}!"
       end
 
-      def color
-        params[:color]
+      def coordinates
+        '+0+0'
       end
 
       def first_pixel

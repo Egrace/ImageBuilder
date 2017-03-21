@@ -7,28 +7,14 @@ module ImageProcessing
     class BannerProcessor < Processor
       def process(convert)
         return unless need_to_process?
-        convert << banner_source
+        convert << source
         convert.geometry size + coordinates
         convert.composite
       end
 
-      private
-
-      def banner_source
+      def source
         params[:source]
       end
-
-      def size
-        return '' if width.nil? || height.nil?
-        "#{width}x#{height}"
-      end
-
-      def coordinates
-        return '+0+0' if x.nil? || y.nil?
-        "+#{x}+#{y}"
-      end
-
-      private
 
       def width
         params[:width]
@@ -44,6 +30,18 @@ module ImageProcessing
 
       def y
         params[:y]
+      end
+
+      private
+
+      def size
+        return '' if width.nil? || height.nil?
+        "#{width}x#{height}"
+      end
+
+      def coordinates
+        return '+0+0' if x.nil? || y.nil?
+        "+#{x}+#{y}"
       end
     end
   end

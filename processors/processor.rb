@@ -9,7 +9,7 @@ module ImageProcessing
       end
 
       def need_to_process?
-        !params.nil?
+        !params.nil? && !params.empty?
       end
     end
   end

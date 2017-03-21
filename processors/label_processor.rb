@@ -11,10 +11,12 @@ module ImageProcessing
         convert.draw "text #{position} \"#{text}\""
       end
 
-      private
+      def x
+        params[:x]
+      end
 
-      def position
-        "#{params[:x]},#{params[:y]}"
+      def y
+        params[:y]
       end
 
       def text
@@ -31,6 +33,12 @@ module ImageProcessing
 
       def color
         params[:color]
+      end
+
+      private
+
+      def position
+        "#{params[:x]},#{params[:y]}"
       end
     end
   end
