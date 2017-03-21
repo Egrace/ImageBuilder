@@ -61,7 +61,7 @@ Result:
 <img src='http://joxi.ru/bmoJBRRHzw0Jry.jpg'></img>
 
 
-<h1>Samples of usage</h1>
+<h1>More samples</h1>
 
 <h2> #1 </h2>
 
