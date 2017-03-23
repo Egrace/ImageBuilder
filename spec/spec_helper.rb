@@ -1,1 +1,1 @@
-require_relative '../image_builder'
+require_relative '../lib/banner_builder'
